@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="./favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title>Enigmat1k</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="cover.css" rel="stylesheet">
+</head>
+<body class="text-center">
+  <div class="d-flex p-3 flex-column mx-auto">
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Enigmat1k</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Acceuil</a>
+            <a class="nav-link" href="#">Plus</a>
+            <button type="button" class="nav-link border-top-0 border-right-0 border-left-0" data-toggle="modal" data-target="#exampleModalCenter">
+              Contact
+            </button>
+          </nav>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-dark">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </header>
+    </div>
+
+    <br>
+    <div class="mx-auto">
+      <div class="d-flex flex-row">
+        <span class="border border-dark rounded text-dark bg-light pt-2" style="min-width: 150px;">Réflecteur</span>
+        <div id="reflecteur" class="d-flex flex-row bd-highlight mt-2 mb-3"></div>
+      </div>
+
+      <div class="d-flex flex-row ">
+        <span class="border border-dark rounded text-dark bg-light pt-3 my-2" style="min-width: 150px;">Rotor 3</span>
+          <div class="d-flex flex-column mt-3">
+            <div id="rotor32" class="d-flex flex-row bd-highlight"></div>
+            <div id="rotor31" class="d-flex flex-row bd-highlight mb-3"></div>
+          </div>
+      </div>
+
+      <div class="d-flex flex-row">
+        <span class="border border-dark rounded text-dark bg-light pt-4 my-1" style="min-width: 150px;">Rotor 2</span>
+        <div class="d-flex flex-column mt-3 mb-0">
+          <div id="rotor22" class="d-flex flex-row bd-highlight"></div>
+          <div id="rotor21" class="d-flex flex-row bd-highlight mb-3"></div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row ">
+        <span class="border border-dark rounded text-dark bg-light pt-3 my-2" style="min-width: 150px;">Rotor 1</span>
+        <div class="d-flex flex-column mt-3">
+          <div id="rotor12" class="d-flex flex-row bd-highlight"></div>
+          <div id="rotor11" class="d-flex flex-row bd-highlight mb-3"></div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row">
+        <span class="border border-dark rounded text-dark bg-light pt-2" style="min-width: 150px;">Alphabet</span>
+        <div id="alphabet" class="d-flex flex-row bd-highlight mb-3 mt-2"></div>
+      </div>
+    </div>
+
+    <div class="w-50 mx-auto">
+      <p id='cle1' class="lead">Clé utilisée: </p>
+      <div class="input-group my-1">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Triplet2</span>
+        </div>
+        <input id="triplet11" type="text" class="form-control ml-1">
+        <input id="triplet12" type="text" class="form-control mx-1">
+        <input id="triplet13" type="text" class="form-control">
+        <input type="text" id="triplet21" class="form-control ml-1">
+        <input type="text" id="triplet22" class="form-control mx-1">
+        <input type="text" id="triplet23" class="form-control">
+        <input type="text" class="form-control ml-1" id="triplet31">
+        <input type="text" class="form-control mx-1" id="triplet32">
+        <input type="text" class="form-control" id="triplet33">
+      </div>
+
+    </div>
+    <br>
+
+    <textarea id='text1' class="form-control w-50 mx-auto" rows="4" cols="50">
+      Message à encrypter ou résultat de décryption.
+    </textarea>
+    <br>
+
+    <div class="btn-group w-50 mx-auto d-flex justify-content-center" role="group" aria-label="Basic example">
+      <button type="button pb-4" class="btn btn-secondary d-flex align-items-center" onclick="configurerRotors()">
+        <i class="material-icons mr-3">build</i>
+        Configurer rotors
+      </button>
+      <button type="button" class="btn btn-secondary d-flex align-items-center" onclick="encrypterMessage()">
+        <i class="material-icons mr-3">vertical_align_top</i>
+        <span>Encrypter</span>
+      </button>
+      <button type="button" class="btn btn-secondary d-flex align-items-center" onclick="etapeSuivante()">
+        <i class="material-icons mr-3">arrow_forward_ios</i>
+        <span>Étape suivante</span>
+      </button>
+      <button type="button" class="btn btn-secondary d-flex align-items-center " onclick="decrypterMessage()">
+        <i class="material-icons mr-3">vertical_align_bottom</i>
+        <span>Décrypter</span>
+      </button>
+    </div>
+    <br><br>
+
+    <textarea id='text2' class="form-control w-50 mx-auto" rows="5" cols="50">
+      Message à décrypter ou résultat d'encryption.
+    </textarea>
+    <br>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Fonctionnement d’un système cryptographique classique,<br> par <a href="https://twitter.com/@dj_master_k">Adzonyo andre kokouvi</a>.</p>
+      </div>
+    </footer>
+  </div>
+
+
+  <script src="script1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
